@@ -1,0 +1,35 @@
+/* becode/javascript
+ *
+ * /09-fetch/01-list-to-console/script.js - 11.1: liste vers console
+ *
+ * coded by leny@BeCode
+ * started at 12/05/2019
+ */
+
+// NOTE: don't focus on the existing code structure for now.
+// You will have time to focus on it later.
+
+(() => {
+
+   /* fetch('http://localhost:8000/_shared/api.json')
+    .then(response => response.json())
+    .then(data => console.log(data));
+    */
+
+   async function myHeroes(){
+       let response = await fetch("http://localhost:8000/_shared/api.json");
+       let data = await response.json();
+    
+       console.log(data);
+       
+       data.heroes.forEach(element => {
+       console.log(element.name);
+           
+       })
+
+    };
+
+    document.getElementById("run").addEventListener("click", myHeroes);
+
+})();
+
