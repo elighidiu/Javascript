@@ -14,24 +14,25 @@
     async function myHeroes(){
         let response = await fetch("http://localhost:8000/_shared/api.json");
         let data = await response.json();
-     
         console.log(data);
-        
-        /*data.heroes.forEach(element => {
-        console.log(element.name);
-        })
-        */
-       var heroId = document.getElementById("hero-id").value;
-       console.log(heroId);
+     
+        let heroId = document.getElementById("hero-id").value;
+        let correspondingHero = data.heroes[heroId-1];       
+        console.log(correspondingHero.name);
+      
+        var target = document.getElementById("target");
+        var t = document.querySelector('#tpl-hero');
 
-       var correspondingHero = data.heroes[heroId-1];
-       console.log(correspondingHero);
+        t.content.querySelector(".name").innerHTML = correspondingHero.name;
+        t.content.querySelector(".alter-ego").innerHTML = correspondingHero.alterEgo;
+        t.content.querySelector(".powers").innerHTML = correspondingHero.abilities;
 
-       document.getElementById("target").innerHTML=heroId;
-       document.getElementsByTagName("template")
+        var clone = document.importNode(t.content, true); //creates a copy of the template with the added info, waiting to be displayed 
+        target.appendChild(clone); //displayes the info
+
 
      };
- 
+     
      document.getElementById("run").addEventListener("click", myHeroes);
 
 })();
