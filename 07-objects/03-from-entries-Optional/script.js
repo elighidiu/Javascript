@@ -13,12 +13,17 @@
     const keys = ["name", "species", "age", "gender", "color"];
     const values = ["Skitty", "cat", 9, "female", "tabby"];
  
-    const myobj = {};
+   const myobj = {};
+   
     
-    keys.forEach((key,i) => {
+    document.getElementById("run").addEventListener("click", function(){
+        keys.forEach((key,i) => {
         myobj[key]=values[i];
-    });
+        });
+        var o = Object.entries(myobj); //display in the console the keys and values from an object created, by using the arrays .
+        console.log(o);
 
-    console.log(myobj);
+    })
+   
 
 })();
